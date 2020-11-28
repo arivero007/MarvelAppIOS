@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7898CC2A2572C7F600808099 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7898CC2C2572C7F600808099 /* Localizable.strings */; };
 		78BFDBD72572816F0080648F /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFDBD52572816F0080648F /* CharacterTableViewCell.swift */; };
 		78BFDBD82572816F0080648F /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BFDBD62572816F0080648F /* CharacterTableViewCell.xib */; };
 		78CDBD07257269A300AF4153 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD06257269A300AF4153 /* AppDelegate.swift */; };
@@ -49,6 +50,9 @@
 		33CC6FB61758A4014C2AA66D /* Pods_MarvelApp_MarvelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp_MarvelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5200F8295F197E58BDE41163 /* Pods-MarvelApp-MarvelAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp-MarvelAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelApp-MarvelAppUITests/Pods-MarvelApp-MarvelAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DD325EDE60A47927CCC2E88 /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
+		7898CC1A2572C70800808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		7898CC1E2572C70900808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7898CC2B2572C7F600808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		78BFDBD52572816F0080648F /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		78BFDBD62572816F0080648F /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		78CDBD03257269A300AF4153 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +162,7 @@
 				78CDBD0F257269A400AF4153 /* Assets.xcassets */,
 				78CDBD11257269A400AF4153 /* LaunchScreen.storyboard */,
 				78CDBD14257269A400AF4153 /* Info.plist */,
+				7898CC2C2572C7F600808099 /* Localizable.strings */,
 			);
 			path = MarvelApp;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 78CDBCFA257269A300AF4153;
 			productRefGroup = 78CDBD04257269A300AF4153 /* Products */;
@@ -329,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7898CC2A2572C7F600808099 /* Localizable.strings in Resources */,
 				78CDBD13257269A400AF4153 /* LaunchScreen.storyboard in Resources */,
 				78CDBD10257269A400AF4153 /* Assets.xcassets in Resources */,
 				78CDBD0E257269A300AF4153 /* Main.storyboard in Resources */,
@@ -504,10 +511,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7898CC2C2572C7F600808099 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7898CC2B2572C7F600808099 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		78CDBD0C257269A300AF4153 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				78CDBD0D257269A300AF4153 /* Base */,
+				7898CC1A2572C70800808099 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -516,6 +532,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				78CDBD12257269A400AF4153 /* Base */,
+				7898CC1E2572C70900808099 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -527,6 +544,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -588,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

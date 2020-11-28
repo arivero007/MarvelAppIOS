@@ -7,19 +7,17 @@
 
 import UIKit
 import RxSwift
-import JGProgressHUD
 
 class CharactersTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    var hud: JGProgressHUD?
-    
-    var characters = [Character]()
-    var filteredCharacters = [Character]()
-    var characterId: Int64?
+        
+    private var characters = [Character]()
+    private var filteredCharacters = [Character]()
+    private var characterId: Int64?
     
     private var disposeBag = DisposeBag()
+    
     
     //MARK: LIFECYCLE
     
@@ -45,10 +43,15 @@ class CharactersTableViewController: UITableViewController {
         if(NetworkConnection.isConnected()){
             getCharactersWS()
         }else{
-            Utils.showAlert(title: Utils.translateText(text: "GEN_ADVISE"), text: Utils.translateText(text: "ERR_INTERNET"), view: self)
+            Utils.showAlert(title: Utils.translateText(text: "GEN_ADVISE"), text: Utils.translateText(text: "NO_INTERNET"), view: self)
         }
     }
     
+    // MARK: Refresh Control
+    
+    @IBAction func refreshCharacters(_ sender: UIRefreshControl) {
+        getCharactersData()
+    }
     
     // MARK: - Table view data source
 
@@ -91,15 +94,14 @@ class CharactersTableViewController: UITableViewController {
             .subscribe { marvelData in
                 self.characters = marvelData.data.results
                 self.filteredCharacters = marvelData.data.results
-                
                 self.tableView.reloadData()
-                
+                self.refreshControl?.endRefreshing()
             } onError: { error in
-                Utils.showAlert(title: Utils.translateText(text: "GEN_ERROR"), text: nil, view: self)
+                Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
+                self.refreshControl?.endRefreshing()
             } onCompleted: {
-                
+                self.refreshControl?.endRefreshing()
             }.disposed(by: disposeBag)
-
     }
     
     //MARK: Navigation
@@ -117,7 +119,7 @@ class CharactersTableViewController: UITableViewController {
 
 extension CharactersTableViewController: UISearchBarDelegate{
     
-    // MARK: - Search bar data source
+    // MARK: - Search bar delegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
