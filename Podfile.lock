@@ -9,7 +9,7 @@ PODS:
   - RxSwift (6.0.0-rc.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - Alamofire
   - JGProgressHUD
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
@@ -29,6 +29,6 @@ SPEC CHECKSUMS:
   RxRelay: b9e2483e83f46e4e7bf1234c6fe418e5c2eaf825
   RxSwift: ada35be6643bedf6881cdbd6bbfb27aeea527670
 
-PODFILE CHECKSUM: 63319ae7c5fd0f281b5cf56b6182c5d99cbebddf
+PODFILE CHECKSUM: f42a30a50e6361939d5c881f679ded163a7a42c1
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

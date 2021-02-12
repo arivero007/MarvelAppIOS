@@ -1,5 +1,5 @@
 //
-//  ApiManager.swift
+//  ApiRequest.swift
 //  MarvelApp
 //
 //  Created by Alexander Rivero on 11/2/21.
@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 protocol ApiRequest {
-    
     var method: RequestType { get }
     var path: String { get }
     var parameters: [String : String] { get }
@@ -17,6 +15,7 @@ protocol ApiRequest {
 
 extension ApiRequest {
     
+    // Returns ts, hashHex
     func generateTimeAndHash() -> (Int64, String) {
         let ts =  Int64(NSDate().timeIntervalSince1970)
         let md5 = String.init(format: "\(ts)%@%@", Constants.apiKeyPri, Constants.apiKeyPub)
@@ -25,6 +24,7 @@ extension ApiRequest {
         return (ts, hashHex)
     }
     
+    // Returns URLRequest for WebService call
     func request(with baseURL: String) -> URLRequest {
         
         let (ts, hashHex) = generateTimeAndHash()

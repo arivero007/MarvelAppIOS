@@ -15,3 +15,7 @@
 //ERRORS
 "WS_ERROR" = "Ha ocurrido un problema en las comunicaciones";
 "NO_INTERNET" = "No tienes conexión a internet";
+
+//CHARACTERS
+"character-list-title" = "Personajes de Marvel";
+"search-bar-text" = "Buscar personaje";

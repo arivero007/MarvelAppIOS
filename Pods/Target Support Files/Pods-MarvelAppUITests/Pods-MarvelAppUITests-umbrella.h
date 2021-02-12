@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MarvelApp_MarvelAppUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MarvelApp_MarvelAppUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_MarvelAppUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MarvelAppUITestsVersionString[];
 

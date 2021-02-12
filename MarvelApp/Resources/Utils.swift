@@ -65,7 +65,7 @@ extension UIImageView {
 
 //MARK: - ENUM
 
-public enum RequestType: String {
+enum RequestType: String {
     case GET, POST
 }
 

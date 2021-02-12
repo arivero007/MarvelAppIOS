@@ -18,18 +18,37 @@ class CharactersTableViewController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     
-    //MARK: LIFECYCLE
+//MARK: - LIFECYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchBar.delegate = self
         
+        setLiterals()
         registerCell()
         getCharactersData()
     }
+        
+    @IBAction func refreshCharacters(_ sender: UIRefreshControl) {
+        getCharactersData()
+    }
     
-    //MARK: Class functions
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let vc = segue.destination as? CharacterViewController else{
+            return
+        }
+        vc.characterId = self.characterId
+        
+    }
+}
+
+//MARK: - Class functions
+
+extension CharactersTableViewController{
     
     private func registerCell() {
         let cell = UINib(nibName: "CharacterTableViewCell",
@@ -47,13 +66,61 @@ class CharactersTableViewController: UITableViewController {
         }
     }
     
-    // MARK: Refresh Control
+    //MARK: - WebService
     
-    @IBAction func refreshCharacters(_ sender: UIRefreshControl) {
-        getCharactersData()
+    private func getCharactersWS(){
+        
+        let characters: Observable<MarvelData> = RXWrapper.shared.request(apiRequest: CharactersRequest())
+        
+        characters
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+            .subscribe { marvelData in
+                self.characters = marvelData.data.results
+                self.filteredCharacters = marvelData.data.results
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            } onError: { error in
+                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
+                self.refreshControl?.endRefreshing()
+            } onCompleted: {
+                self.refreshControl?.endRefreshing()
+            }.disposed(by: disposeBag)
+        
     }
     
-    // MARK: - Table view data source
+    /* - Old WebService request
+     
+    private func oldGetCharacters(){
+        WebServices.getAllCharacters()
+            .subscribe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+            .subscribe { marvelData in
+                self.characters = marvelData.data.results
+                self.filteredCharacters = marvelData.data.results
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            } onError: { error in
+                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
+                self.refreshControl?.endRefreshing()
+            } onCompleted: {
+                self.refreshControl?.endRefreshing()
+            }.disposed(by: disposeBag)
+    }
+ */
+    
+    //MARK: - Literals
+    
+    private func setLiterals(){
+        
+        self.navigationItem.title = "character-list-title".localized()
+        searchBar.placeholder = "search-bar-text".localized()
+    }
+}
+
+// MARK: - Table view data source
+
+extension CharactersTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -83,64 +150,11 @@ class CharactersTableViewController: UITableViewController {
         
         performSegue(withIdentifier: "segueCharacter", sender: nil)
     }
-    
-    //MARK: WS
-    
-    private func getCharactersWS(){
-        
-        let characters: Observable<MarvelData> = RXWrapper.shared.request(apiRequest: CharactersRequest())
-        
-        characters
-            .subscribe(on: MainScheduler.instance)
-            .observe(on: MainScheduler.instance)
-            .subscribe { marvelData in
-                self.characters = marvelData.data.results
-                self.filteredCharacters = marvelData.data.results
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            } onError: { error in
-                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
-                self.refreshControl?.endRefreshing()
-            } onCompleted: {
-                self.refreshControl?.endRefreshing()
-            }.disposed(by: disposeBag)
-        
-    }
-    
-    private func oldGetCharacters(){
-        
-        WebServices.getAllCharacters()
-            .subscribe(on: MainScheduler.instance)
-            .observe(on: MainScheduler.instance)
-            .subscribe { marvelData in
-                self.characters = marvelData.data.results
-                self.filteredCharacters = marvelData.data.results
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            } onError: { error in
-                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
-                self.refreshControl?.endRefreshing()
-            } onCompleted: {
-                self.refreshControl?.endRefreshing()
-            }.disposed(by: disposeBag)
-    }
-    
-    //MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "segueCharacter"){
-            let cp = segue.destination as! CharacterViewController
-            cp.characterId = self.characterId
-        }
-    }
-    
 }
 
-//MARK: Class Extensions
+// MARK: - Search bar delegate
 
 extension CharactersTableViewController: UISearchBarDelegate{
-    
-    // MARK: - Search bar delegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
