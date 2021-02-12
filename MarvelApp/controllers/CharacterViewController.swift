@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import JGProgressHUD
 
-class CharacterViewController: UIViewController {
+final class CharacterViewController: UIViewController {
     
     var characterId: Int64?
     private var character: Character?
@@ -40,7 +40,7 @@ class CharacterViewController: UIViewController {
         if(NetworkConnection.isConnected()){
             getCharacterWS()
         }else{
-            Utils.showAlert(title: Utils.translateText(text: "GEN_ADVISE"), text: Utils.translateText(text: "NO_INTERNET"), view: self)
+            showAlert(title: Utils.translateText(text: "GEN_ADVISE"), message: Utils.translateText(text: "NO_INTERNET"))
         }
     }
     
@@ -74,7 +74,7 @@ class CharacterViewController: UIViewController {
                 self.hud?.dismiss()
             } onError: { error in
                 self.hud?.dismiss()
-                Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
+                self.showAlert(title: Utils.translateText(text: "WS_ERROR"), message: nil)
             } onCompleted: {
                 self.hud?.dismiss()
             }.disposed(by: disposeBag)

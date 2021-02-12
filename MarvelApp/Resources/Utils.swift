@@ -11,17 +11,9 @@ import var CommonCrypto.CC_MD5_DIGEST_LENGTH
 import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
 
-
 class Utils {
     
     //MARK: FUNCTIONS
-    
-    static func showAlert(title: String?, text: String?, view: UIViewController){
-        
-        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-        view.present(alert, animated: true)
-    }
     
     static func translateText(text: String) -> String {
         
@@ -53,31 +45,7 @@ class Utils {
 
 //MARK: STRUCTS
 
-struct MarvelData: Codable {
-    let data: DataResult
-}
 
-struct DataResult: Codable {
-    var results: [Character]
-}
-
-struct Character: Codable {
-    let id: Int64
-    let name: String
-    let thumbnail: Thumbnail?
-    let description: String?
-    let modified: String?
-}
-
-struct Thumbnail: Codable {
-    let path: String
-    let type: String
-    
-    enum CodingKeys: String, CodingKey {
-        case path
-        case type = "extension"
-    }
-}
 
 //MARK: EXTENSIONS
 
@@ -93,6 +61,12 @@ extension UIImageView {
             }
         }
     }
+}
+
+//MARK: - ENUM
+
+enum RequestType: String {
+    case GET, POST
 }
 
 

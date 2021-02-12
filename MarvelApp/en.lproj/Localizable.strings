@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Alexander Rivero on 28/11/20.
+  
+*/
+
+//GENERAL
+"GEN_ADVISE" = "Warning";
+"GEN_ERROR" = "Error";
+"GEN_CHARGING" = "Loading...";
+
+//ERRORS
+"WS_ERROR" = "An error has ocurred with communications";
+"NO_INTERNET" = "No internet conection";
+
+//CHARACTERS
+"character-list-title" = "Marvel Characters";
+"search-bar-text" = "Search character";

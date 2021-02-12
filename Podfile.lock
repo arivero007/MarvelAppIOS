@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (5.2.2)
-  - JGProgressHUD (2.1)
+  - Alamofire (5.4.1)
+  - JGProgressHUD (2.2)
   - RxCocoa (6.0.0-rc.2):
     - RxRelay (= 6.0.0-rc.2)
     - RxSwift (= 6.0.0-rc.2)
@@ -9,7 +9,7 @@ PODS:
   - RxSwift (6.0.0-rc.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - Alamofire
   - JGProgressHUD
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
@@ -23,12 +23,12 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   RxCocoa: 38445a25751be5907f52f7ea02c137f52ce2e7f2
   RxRelay: b9e2483e83f46e4e7bf1234c6fe418e5c2eaf825
   RxSwift: ada35be6643bedf6881cdbd6bbfb27aeea527670
 
-PODFILE CHECKSUM: 32ead6c320c40c0e8552eed5a3ac61545b03d007
+PODFILE CHECKSUM: f42a30a50e6361939d5c881f679ded163a7a42c1
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

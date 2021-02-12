@@ -18,13 +18,6 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-MarvelApp-MarvelAppUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 		<key>Pods-MarvelApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -33,6 +26,13 @@
 			<integer>2</integer>
 		</dict>
 		<key>Pods-MarvelAppTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-MarvelAppUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
