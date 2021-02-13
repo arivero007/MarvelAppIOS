@@ -94,26 +94,6 @@ extension CharactersTableViewController{
         
     }
     
-    /* - Old WebService request
-     
-    private func oldGetCharacters(){
-        WebServices.getAllCharacters()
-            .subscribe(on: MainScheduler.instance)
-            .observe(on: MainScheduler.instance)
-            .subscribe { marvelData in
-                self.characters = marvelData.data.results
-                self.filteredCharacters = marvelData.data.results
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            } onError: { error in
-                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
-                self.refreshControl?.endRefreshing()
-            } onCompleted: {
-                self.refreshControl?.endRefreshing()
-            }.disposed(by: disposeBag)
-    }
- */
-    
     //MARK: - Literals
     
     private func setLiterals(){

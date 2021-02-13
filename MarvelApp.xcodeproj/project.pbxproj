@@ -32,7 +32,6 @@
 		78CDBD29257269A400AF4153 /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD28257269A400AF4153 /* MarvelAppUITests.swift */; };
 		78CDBD4F25726FE700AF4153 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD4E25726FE700AF4153 /* Utils.swift */; };
 		78CDBD552572706600AF4153 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD542572706600AF4153 /* NetworkConnection.swift */; };
-		78CDBD5D257270BB00AF4153 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD5C257270BB00AF4153 /* WebServices.swift */; };
 		78CDBD822572739300AF4153 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD812572739300AF4153 /* Constants.swift */; };
 		78CDBD8A2572744300AF4153 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD892572744200AF4153 /* CharactersTableViewController.swift */; };
 		78CDBD93257274C800AF4153 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD92257274C800AF4153 /* CharacterViewController.swift */; };
@@ -98,7 +97,6 @@
 		78CDBD2A257269A400AF4153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CDBD4E25726FE700AF4153 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		78CDBD542572706600AF4153 /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
-		78CDBD5C257270BB00AF4153 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 		78CDBD812572739300AF4153 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		78CDBD892572744200AF4153 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 		78CDBD92257274C800AF4153 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				78CDBD542572706600AF4153 /* NetworkConnection.swift */,
-				78CDBD5C257270BB00AF4153 /* WebServices.swift */,
 				78A2DF9725D47941004EE278 /* RXWrapper.swift */,
 				789427CD25D5AE0E0061ECA2 /* ApiRequest.swift */,
 				7896237425D82B27001F7E91 /* ApiError.swift */,
@@ -521,7 +518,6 @@
 			files = (
 				78A2DF7F25D45DED004EE278 /* ViewController+Extensions.swift in Sources */,
 				78CDBD07257269A300AF4153 /* AppDelegate.swift in Sources */,
-				78CDBD5D257270BB00AF4153 /* WebServices.swift in Sources */,
 				78BFDBD72572816F0080648F /* CharacterTableViewCell.swift in Sources */,
 				7896237A25D82B5C001F7E91 /* Enums.swift in Sources */,
 				789427CE25D5AE0E0061ECA2 /* ApiRequest.swift in Sources */,
