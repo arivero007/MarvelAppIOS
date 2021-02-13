@@ -12,9 +12,14 @@
 "GEN_CHARGING" = "Loading...";
 
 //ERRORS
-"WS_ERROR" = "An error has ocurred with communications";
-"NO_INTERNET" = "No internet conection";
+"error-ws" = "An error has ocurred with communications";
+"error-no-internet" = "No internet conection";
+"error-bad-request" = "Bad request";
+"error-unauthorized" = "Unauthorized";
+"error-not-found" = "Not found";
+"error-unknown" = "Error desconocido";
 
 //CHARACTERS
+"character" = "Character";
 "character-list-title" = "Marvel Characters";
 "search-bar-text" = "Search character";

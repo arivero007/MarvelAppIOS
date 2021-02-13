@@ -7,15 +7,19 @@
 */
 
 //GENERAL
-
 "GEN_ADVISE" = "Aviso";
 "GEN_ERROR" = "Error";
 "GEN_CHARGING" = "Cargando...";
 
 //ERRORS
-"WS_ERROR" = "Ha ocurrido un problema en las comunicaciones";
-"NO_INTERNET" = "No tienes conexión a internet";
+"error-ws" = "Ha ocurrido un problema en las comunicaciones";
+"error-no-internet" = "No tienes conexión a internet";
+"error-bad-request" = "Solicitud erronea";
+"error-unauthorized" = "No autorizado";
+"error-not-found" = "URL no encontrada";
+"error-unknown" = "Error desconocido";
 
 //CHARACTERS
+"character" = "Personaje";
 "character-list-title" = "Personajes de Marvel";
 "search-bar-text" = "Buscar personaje";

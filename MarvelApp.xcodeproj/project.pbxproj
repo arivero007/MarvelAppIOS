@@ -14,6 +14,10 @@
 		789427DC25D5D1D20061ECA2 /* ApiCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789427DB25D5D1D20061ECA2 /* ApiCharacter.swift */; };
 		789427E225D5D8DF0061ECA2 /* CharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789427E125D5D8DF0061ECA2 /* CharactersRequest.swift */; };
 		789427E725D5D95E0061ECA2 /* CharacterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789427E625D5D95E0061ECA2 /* CharacterRequest.swift */; };
+		7896235825D7F386001F7E91 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7896235725D7F386001F7E91 /* Image+Extensions.swift */; };
+		7896237025D81729001F7E91 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7896236F25D81729001F7E91 /* Error+Extension.swift */; };
+		7896237525D82B27001F7E91 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7896237425D82B27001F7E91 /* ApiError.swift */; };
+		7896237A25D82B5C001F7E91 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7896237925D82B5C001F7E91 /* Enums.swift */; };
 		7898CC2A2572C7F600808099 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7898CC2C2572C7F600808099 /* Localizable.strings */; };
 		78A2DF7F25D45DED004EE278 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A2DF7E25D45DED004EE278 /* ViewController+Extensions.swift */; };
 		78A2DF9825D47941004EE278 /* RXWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A2DF9725D47941004EE278 /* RXWrapper.swift */; };
@@ -68,6 +72,10 @@
 		789427DB25D5D1D20061ECA2 /* ApiCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCharacter.swift; sourceTree = "<group>"; };
 		789427E125D5D8DF0061ECA2 /* CharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRequest.swift; sourceTree = "<group>"; };
 		789427E625D5D95E0061ECA2 /* CharacterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRequest.swift; sourceTree = "<group>"; };
+		7896235725D7F386001F7E91 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		7896236F25D81729001F7E91 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
+		7896237425D82B27001F7E91 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		7896237925D82B5C001F7E91 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7898CC1A2572C70800808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7898CC1E2572C70900808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7898CC2B2572C7F600808099 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -146,6 +154,8 @@
 			children = (
 				78A2DF7E25D45DED004EE278 /* ViewController+Extensions.swift */,
 				787B94C025D71436007F4E58 /* String+Extensions.swift */,
+				7896235725D7F386001F7E91 /* Image+Extensions.swift */,
+				7896236F25D81729001F7E91 /* Error+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -168,13 +178,13 @@
 			path = requests;
 			sourceTree = "<group>";
 		};
-		78BFDBD4257281470080648F /* CustomViews */ = {
+		78BFDBD4257281470080648F /* cells */ = {
 			isa = PBXGroup;
 			children = (
 				78BFDBD52572816F0080648F /* CharacterTableViewCell.swift */,
 				78BFDBD62572816F0080648F /* CharacterTableViewCell.xib */,
 			);
-			path = CustomViews;
+			path = cells;
 			sourceTree = "<group>";
 		};
 		78CDBCFA257269A300AF4153 = {
@@ -206,10 +216,10 @@
 				78CDBD08257269A300AF4153 /* SceneDelegate.swift */,
 				78CDBD8E2572745700AF4153 /* controllers */,
 				78875C9D25D45566008A0C1D /* extensions */,
-				78CDBD4C25726F9B00AF4153 /* Resources */,
+				78CDBD4C25726F9B00AF4153 /* resources */,
 				78CDBD532572704E00AF4153 /* api */,
 				789427D525D5D10F0061ECA2 /* model */,
-				78BFDBD4257281470080648F /* CustomViews */,
+				78BFDBD4257281470080648F /* cells */,
 				78CDBD0C257269A300AF4153 /* Main.storyboard */,
 				78CDBD0F257269A400AF4153 /* Assets.xcassets */,
 				78CDBD11257269A400AF4153 /* LaunchScreen.storyboard */,
@@ -237,13 +247,14 @@
 			path = MarvelAppUITests;
 			sourceTree = "<group>";
 		};
-		78CDBD4C25726F9B00AF4153 /* Resources */ = {
+		78CDBD4C25726F9B00AF4153 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				78CDBD4E25726FE700AF4153 /* Utils.swift */,
 				78CDBD812572739300AF4153 /* Constants.swift */,
+				78CDBD4E25726FE700AF4153 /* Utils.swift */,
+				7896237925D82B5C001F7E91 /* Enums.swift */,
 			);
-			path = Resources;
+			path = resources;
 			sourceTree = "<group>";
 		};
 		78CDBD532572704E00AF4153 /* api */ = {
@@ -253,6 +264,7 @@
 				78CDBD5C257270BB00AF4153 /* WebServices.swift */,
 				78A2DF9725D47941004EE278 /* RXWrapper.swift */,
 				789427CD25D5AE0E0061ECA2 /* ApiRequest.swift */,
+				7896237425D82B27001F7E91 /* ApiError.swift */,
 				789427E025D5D8C40061ECA2 /* requests */,
 			);
 			path = api;
@@ -511,13 +523,17 @@
 				78CDBD07257269A300AF4153 /* AppDelegate.swift in Sources */,
 				78CDBD5D257270BB00AF4153 /* WebServices.swift in Sources */,
 				78BFDBD72572816F0080648F /* CharacterTableViewCell.swift in Sources */,
+				7896237A25D82B5C001F7E91 /* Enums.swift in Sources */,
 				789427CE25D5AE0E0061ECA2 /* ApiRequest.swift in Sources */,
 				78A2DF9825D47941004EE278 /* RXWrapper.swift in Sources */,
 				78CDBD8A2572744300AF4153 /* CharactersTableViewController.swift in Sources */,
 				789427E725D5D95E0061ECA2 /* CharacterRequest.swift in Sources */,
 				78CDBD552572706600AF4153 /* NetworkConnection.swift in Sources */,
+				7896235825D7F386001F7E91 /* Image+Extensions.swift in Sources */,
 				789427DC25D5D1D20061ECA2 /* ApiCharacter.swift in Sources */,
+				7896237025D81729001F7E91 /* Error+Extension.swift in Sources */,
 				78CDBD93257274C800AF4153 /* CharacterViewController.swift in Sources */,
+				7896237525D82B27001F7E91 /* ApiError.swift in Sources */,
 				789427D725D5D1820061ECA2 /* ApiCharacters.swift in Sources */,
 				787B94C125D71436007F4E58 /* String+Extensions.swift in Sources */,
 				789427E225D5D8DF0061ECA2 /* CharactersRequest.swift in Sources */,

@@ -8,17 +8,19 @@
 import UIKit
 import RxSwift
 
-class CharactersTableViewController: UITableViewController {
+final class CharactersTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     private var characters = [Character]()
-    private var filteredCharacters = [Character]()
+    
+    lazy var filteredCharacters: [Character] = {
+        return [Character]()
+    }()
+    
     private var characterId: Int64?
     
     private let disposeBag = DisposeBag()
-    
-//MARK: - LIFECYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +64,7 @@ extension CharactersTableViewController{
             getCharactersWS()
             //oldGetCharacters()
         }else{
-            //Utils.showAlert(title: Utils.translateText(text: "GEN_ADVISE"), text: Utils.translateText(text: "NO_INTERNET"), view: self)
+            showAlert(title: "GEN_ADVISE".localized(), message: "NO_INTERNET".localized())
         }
     }
     
@@ -81,7 +83,10 @@ extension CharactersTableViewController{
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             } onError: { error in
-                //Utils.showAlert(title: Utils.translateText(text: "WS_ERROR"), text: nil, view: self)
+                guard let error = error as? ApiError else{
+                    return
+                }
+                self.showAlert(title: "error-ws".localized(), message: error.localizedError())
                 self.refreshControl?.endRefreshing()
             } onCompleted: {
                 self.refreshControl?.endRefreshing()
@@ -112,7 +117,6 @@ extension CharactersTableViewController{
     //MARK: - Literals
     
     private func setLiterals(){
-        
         self.navigationItem.title = "character-list-title".localized()
         searchBar.placeholder = "search-bar-text".localized()
     }

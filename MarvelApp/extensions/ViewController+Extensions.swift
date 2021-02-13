@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 extension UIViewController{
     
@@ -15,6 +16,12 @@ extension UIViewController{
         self.present(alert, animated: true)
     }
     
-    
+    open func showProgressHud() -> JGProgressHUD{
+        var hud = JGProgressHUD()
+        hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = Utils.translateText(text: "GEN_CHARGING")
+        hud.show(in: self.view)
+        return hud
+    }
 
 }

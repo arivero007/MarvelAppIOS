@@ -13,8 +13,9 @@ import typealias CommonCrypto.CC_LONG
 
 class Utils {
     
-    //MARK: FUNCTIONS
+    //MARK: Global functions
     
+    // Deprecated: Return localized translation
     static func translateText(text: String) -> String {
         
         let selectedLanguage = UserDefaults.standard.value(forKey: "AppLanguage")
@@ -24,6 +25,7 @@ class Utils {
         return trad
     }
     
+    // Returns hash md5 generated data value
     static func MD5(string: String) -> Data {
             let length = Int(CC_MD5_DIGEST_LENGTH)
             let messageData = string.data(using:.utf8)!
@@ -40,33 +42,4 @@ class Utils {
             }
             return digestData
         }
-    
 }
-
-//MARK: STRUCTS
-
-
-
-//MARK: EXTENSIONS
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
-
-//MARK: - ENUM
-
-enum RequestType: String {
-    case GET, POST
-}
-
-

@@ -14,7 +14,6 @@ final class CharacterViewController: UIViewController {
     var characterId: Int64?
     private var character: Character?
     
-    private var hud: JGProgressHUD?
     private var disposeBag = DisposeBag()
     
     @IBOutlet weak var lblName: UILabel!
@@ -29,12 +28,25 @@ final class CharacterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         getCharactersData()
         
     }
     
-    //MARK: Class functions
+    override var shouldAutorotate: Bool{
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+                return .allButUpsideDown
+            } else {
+                return .all
+            }
+    }
+
+}
+
+extension CharacterViewController {
     
     private func getCharactersData(){
         if(NetworkConnection.isConnected()){
@@ -58,40 +70,29 @@ final class CharacterViewController: UIViewController {
     }
     
     //MARK: WS
-    
     private func getCharacterWS(){
         
-        hud = JGProgressHUD(style: .dark)
-        hud?.textLabel.text = Utils.translateText(text: "GEN_CHARGING")
-        hud?.show(in: self.view)
+        let hud = showProgressHud()
+        
+        let character: Observable<Character> = RXWrapper.shared.request(apiRequest: CharacterRequest())
                 
-        return WebServices.getCharacter(id: characterId ?? 0)
+        character
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
             .subscribe { character in
                 self.character = character
                 self.fillCharacterData()
-                self.hud?.dismiss()
+                hud.dismiss()
             } onError: { error in
-                self.hud?.dismiss()
-                self.showAlert(title: Utils.translateText(text: "WS_ERROR"), message: nil)
+                hud.dismiss()
+                self.showAlert(title: "WS_ERROR".localized(), message: error.localizedDescription)
             } onCompleted: {
-                self.hud?.dismiss()
+                hud.dismiss()
             }.disposed(by: disposeBag)
     }
     
-    //MARK: VIEW
-    
-    override var shouldAutorotate: Bool{
-        return false
+    //MARK: - Literals
+    private func setLiterals(){
+        self.navigationItem.title = character?.name ?? "character".localized()
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-                return .allButUpsideDown
-            } else {
-                return .all
-            }
-    }
-
 }
