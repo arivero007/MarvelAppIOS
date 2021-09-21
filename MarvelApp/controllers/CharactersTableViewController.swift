@@ -11,22 +11,17 @@ import RxSwift
 final class CharactersTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    private var characters = [Character]()
-    
-    lazy var filteredCharacters: [Character] = {
-        return [Character]()
+        
+    lazy private var charactersVM: CharactersViewModel = {
+        return CharactersViewModel()
     }()
-    
-    private var characterId: Int64?
-    
-    private let disposeBag = DisposeBag()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchBar.delegate = self
         
+        setBindings()
         setLiterals()
         registerCell()
         getCharactersData()
@@ -40,10 +35,10 @@ final class CharactersTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let vc = segue.destination as? CharacterViewController else{
+        guard let vc = segue.destination as? CharacterViewController, let id = sender as? Int64 else{
             return
         }
-        vc.characterId = self.characterId
+        vc.characterId = id
         
     }
 }
@@ -51,6 +46,13 @@ final class CharactersTableViewController: UITableViewController {
 //MARK: - Class functions
 
 extension CharactersTableViewController{
+    
+    private func setBindings(){
+        charactersVM.bindCharactersViewModelToController = {
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
     
     private func registerCell() {
         let cell = UINib(nibName: "CharacterTableViewCell",
@@ -61,37 +63,10 @@ extension CharactersTableViewController{
     
     private func getCharactersData(){
         if(NetworkConnection.isConnected()){
-            getCharactersWS()
-            //oldGetCharacters()
+            charactersVM.getCharacters(view: self)
         }else{
             showAlert(title: "GEN_ADVISE".localized(), message: "NO_INTERNET".localized())
         }
-    }
-    
-    //MARK: - WebService
-    
-    private func getCharactersWS(){
-        
-        let characters: Observable<MarvelData> = RXWrapper.shared.request(apiRequest: CharactersRequest())
-        
-        characters
-            .subscribe(on: MainScheduler.instance)
-            .observe(on: MainScheduler.instance)
-            .subscribe { marvelData in
-                self.characters = marvelData.data.results
-                self.filteredCharacters = marvelData.data.results
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            } onError: { error in
-                guard let error = error as? ApiError else{
-                    return
-                }
-                self.showAlert(title: "error-ws".localized(), message: error.localizedError())
-                self.refreshControl?.endRefreshing()
-            } onCompleted: {
-                self.refreshControl?.endRefreshing()
-            }.disposed(by: disposeBag)
-        
     }
     
     //MARK: - Literals
@@ -107,13 +82,11 @@ extension CharactersTableViewController{
 extension CharactersTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return filteredCharacters.count
+        return charactersVM.filteredCharacters.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,7 +94,7 @@ extension CharactersTableViewController {
             return UITableViewCell()
         }
         
-        cell.lblName.text = filteredCharacters[indexPath.item].name
+        cell.lblName.text = charactersVM.filteredCharacters[indexPath.item].name
         
         return cell
     }
@@ -130,9 +103,9 @@ extension CharactersTableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        characterId = filteredCharacters[indexPath.item].id
+        let characterId = charactersVM.filteredCharacters[indexPath.item].id
         
-        performSegue(withIdentifier: "segueCharacter", sender: nil)
+        performSegue(withIdentifier: "segueCharacter", sender: characterId)
     }
 }
 
@@ -141,20 +114,6 @@ extension CharactersTableViewController {
 extension CharactersTableViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filteredCharacters = []
-        
-        if searchText == ""{
-            filteredCharacters = characters
-        }else{
-            for item in characters{
-                
-                if item.name.contains(searchText){
-                    filteredCharacters.append(item)
-                }
-            }
-        }
-        
-        self.tableView.reloadData()
+        charactersVM.applyTextFilter(text: searchText)
     }
 }

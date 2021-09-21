@@ -27,7 +27,7 @@ extension RXWrapper{
                 
                 guard let data = data, error == nil, let response = response as? HTTPURLResponse else {return}
                 
-                print("WebService status code: \(response.statusCode)")
+                print("API response status code: \(response.statusCode)")
                 switch ResponseStatusCode(rawValue: response.statusCode) {
                 case .ok:
                     do {
