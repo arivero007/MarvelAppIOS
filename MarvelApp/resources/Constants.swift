@@ -12,7 +12,7 @@ class Constants {
     static let marvelUrl = "https://gateway.marvel.com:443/v1"
     static let marvelBaseUrl = URL(string: "https://gateway.marvel.com:443/v1")!
     static let marvelAllCharacters = "/public/characters"
-    static let marvelCharacter = "/public/character"
+    static let marvelCharacter = "/public/characters"
 
     // MARK: - Marvel API
     static let apiKeyPri = "1086c3673d4573cd881f5cdc2c7b276bd6ea66d3"

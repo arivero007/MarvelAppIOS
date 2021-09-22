@@ -27,23 +27,31 @@ extension ApiRequest {
     // Returns URLRequest for WebService call
     func request(with baseURL: String) -> URLRequest {
         
-        let (ts, hashHex) = generateTimeAndHash()
-        let finalPath = String.init(format: "%@%@?ts=\(ts)&apikey=%@&hash=\(hashHex)", baseURL, path
-                                           ,Constants.apiKeyPub)
-
-        guard let url = URL(string: finalPath), var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+        let withPath = String(format: "%@%@", baseURL, path)
+        
+        guard let url = URL(string: withPath), var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             fatalError("Unable to create URL components")
         }
+        print("Web Service URL: \(String(describing: components.url))")
         
-        print("Web Service URL: \(url)")
-        
+        components.queryItems = []
+
         if(!parameters.isEmpty){
             components.queryItems = parameters.map {
                 URLQueryItem(name: String($0), value: String($1))
             }
         }
         
-        var request = URLRequest.init(url: url)
+        let (ts, hashHex) = generateTimeAndHash()
+        
+        components.queryItems!.append(URLQueryItem(name: "ts", value: ts.description))
+        components.queryItems!.append(URLQueryItem(name: "apikey", value: Constants.apiKeyPub))
+        components.queryItems!.append(URLQueryItem(name: "hash", value: hashHex))
+        
+        //let finalPath = String.init(format: "%@%@?ts=\(ts)&apikey=%@&hash=\(hashHex)", baseURL, path, Constants.apiKeyPub)
+        print("Web Service URL: \(String(describing: components.url))")
+        
+        var request = URLRequest.init(url: components.url!)
         request.httpMethod = method.rawValue
         request.cachePolicy = .useProtocolCachePolicy
         request.timeoutInterval = 15

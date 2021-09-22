@@ -39,6 +39,7 @@ class CharactersViewModel: NSObject {
             .subscribe(on: MainScheduler.instance)
             .observe(on: MainScheduler.instance)
             .subscribe { marvelData in
+                print("[Api] Response -> \(marvelData)")
                 self.characters = marvelData.data.results
                 self.filteredCharacters = marvelData.data.results
             } onError: { error in

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 final class CharactersTableViewController: UITableViewController {
     
@@ -34,12 +33,10 @@ final class CharactersTableViewController: UITableViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let vc = segue.destination as? CharacterViewController, let id = sender as? Int64 else{
+        guard let vc = segue.destination as? CharacterInfoViewController, let id = sender as? Int64 else{
             return
         }
         vc.characterId = id
-        
     }
 }
 

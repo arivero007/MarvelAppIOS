@@ -34,8 +34,9 @@
 		78CDBD552572706600AF4153 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD542572706600AF4153 /* NetworkConnection.swift */; };
 		78CDBD822572739300AF4153 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD812572739300AF4153 /* Constants.swift */; };
 		78CDBD8A2572744300AF4153 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD892572744200AF4153 /* CharactersTableViewController.swift */; };
-		78CDBD93257274C800AF4153 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD92257274C800AF4153 /* CharacterViewController.swift */; };
+		78CDBD93257274C800AF4153 /* CharacterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDBD92257274C800AF4153 /* CharacterInfoViewController.swift */; };
 		E545EE5451E9889BCC506533 /* Pods_MarvelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABD66D2BA5F51ACE73B5249 /* Pods_MarvelAppUITests.framework */; };
+		EB52FED626FA20B300CE488F /* CharacterInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52FED526FA20B300CE488F /* CharacterInfoViewModel.swift */; };
 		EBB8E6DA26F9FE7F00B64793 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB8E6D926F9FE7F00B64793 /* CharactersViewModel.swift */; };
 		F5F2A0EFE0686510D8B35637 /* Pods_MarvelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C485A32448FB803551300018 /* Pods_MarvelApp.framework */; };
 /* End PBXBuildFile section */
@@ -100,13 +101,14 @@
 		78CDBD542572706600AF4153 /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		78CDBD812572739300AF4153 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		78CDBD892572744200AF4153 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
-		78CDBD92257274C800AF4153 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		78CDBD92257274C800AF4153 /* CharacterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoViewController.swift; sourceTree = "<group>"; };
 		7FE67AE8D39B950043669F83 /* Pods-MarvelApp-MarvelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp-MarvelAppUITests/Pods-MarvelApp-MarvelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A2239BE619B03D642D2C40DD /* Pods-MarvelApp-MarvelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp-MarvelAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelApp-MarvelAppTests/Pods-MarvelApp-MarvelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BFB97638A98EBF6E2DAAD3A9 /* Pods-MarvelAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelAppUITests/Pods-MarvelAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C17863910941C727AC760B83 /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C485A32448FB803551300018 /* Pods_MarvelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D1D50448A1D74F1AFCDFB8 /* Pods-MarvelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB52FED526FA20B300CE488F /* CharacterInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoViewModel.swift; sourceTree = "<group>"; };
 		EBB8E6D926F9FE7F00B64793 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		F9F15A4395A735EA328CE896 /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,7 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				78CDBD892572744200AF4153 /* CharactersTableViewController.swift */,
-				78CDBD92257274C800AF4153 /* CharacterViewController.swift */,
+				78CDBD92257274C800AF4153 /* CharacterInfoViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB8E6D926F9FE7F00B64793 /* CharactersViewModel.swift */,
+				EB52FED526FA20B300CE488F /* CharacterInfoViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -539,7 +542,8 @@
 				7896235825D7F386001F7E91 /* Image+Extensions.swift in Sources */,
 				789427DC25D5D1D20061ECA2 /* ApiCharacter.swift in Sources */,
 				7896237025D81729001F7E91 /* Error+Extension.swift in Sources */,
-				78CDBD93257274C800AF4153 /* CharacterViewController.swift in Sources */,
+				EB52FED626FA20B300CE488F /* CharacterInfoViewModel.swift in Sources */,
+				78CDBD93257274C800AF4153 /* CharacterInfoViewController.swift in Sources */,
 				7896237525D82B27001F7E91 /* ApiError.swift in Sources */,
 				789427D725D5D1820061ECA2 /* ApiCharacters.swift in Sources */,
 				EBB8E6DA26F9FE7F00B64793 /* CharactersViewModel.swift in Sources */,
